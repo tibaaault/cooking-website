@@ -139,10 +139,12 @@ class RecetteController extends AbstractController
     #[Route('/recipe/delete', name: 'deleteRecette')]
     public function deleteRecipe(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $id_recette = $request->request->get('id_recette');
-
+        $id_recette = $request->request->get('id_recette');    
         $recipe = $entityManager->getRepository(Recette::class)->findOneBy(['id' => $id_recette]);
-
+        if (!$this->canAccessRecipe($recipe)){
+            return $this->redirectToRoute('default_index');
+        }
+        
         // Vérifiez si la recette existe
         if (!$recipe) {
             throw $this->createNotFoundException('La recette avec l\'ID ' . $id_recette . ' n\'existe pas.');
@@ -159,7 +161,7 @@ class RecetteController extends AbstractController
     public function editRecipe(Request $request, EntityManagerInterface $entityManager, Recette $recipe): Response
     {
         if (!$this->canAccessRecipe($recipe)){
-            throw $this->createNotFoundException('Vous n\'avez pas accès à cette recette.');
+            return $this->redirectToRoute('default_index');
         }
 
         // Obtenez les ingrédients et les étapes actuels de la recette

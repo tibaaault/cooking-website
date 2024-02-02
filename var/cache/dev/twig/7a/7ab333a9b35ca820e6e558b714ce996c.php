@@ -120,13 +120,13 @@ class __TwigTemplate_c76101dbf262a04c635b76eba1f367f5 extends Template
 \t\t\t\t<div id=\"ingredients\">
 \t\t\t\t\t<br/>
 \t\t\t\t</div>
-\t\t\t\t\t<button type=\"button\" id=\"add-input\" class=\"btn btn-lg btn-primary\">Ajouter un ingredient</button>
+\t\t\t\t<button type=\"button\" id=\"add-input\" class=\"btn btn-lg btn-primary\">Ajouter un ingredient</button>
 \t\t\t\t<div class=\"d-flex\" style=\"height: 50px \"></div>
 \t\t\t\t<br/>
 \t\t\t\t<div id=\"steps\">
 \t\t\t\t\t<br/>
 \t\t\t\t</div>
-\t\t\t\t\t<button type=\"button\" id=\"add-input2\" class=\"btn btn-lg btn-primary\">Ajouter une étape</button>
+\t\t\t\t<button type=\"button\" id=\"add-input2\" class=\"btn btn-lg btn-primary\">Ajouter une étape</button>
 \t\t\t\t<div class=\"d-flex\" style=\"height: 50px \"></div>
 \t\t\t\t<div>
 \t\t\t\t\t";
@@ -150,7 +150,7 @@ class __TwigTemplate_c76101dbf262a04c635b76eba1f367f5 extends Template
 let counter = 0;
 \$('#add-input').click(function () {
 counter++;
-\$('#ingredients').append('<input type=\"text\" name=\"ingredient' + counter + '\" id=\"recipe_create_ingredients p-2\" class=\"form-control\" placeholder=\"Ingrédient\" required=\"required\">' + '<input type=\"text\" name=\"qqt' + counter + '\" id=\"recipe_create_quantities\" class=\"form-control p-2\" placeholder=\"Quantité\" required=\"required\">' + '<br>');
+\$('#ingredients').append('<div class=\"row\"><div class=\"col-xl-6\"><input type=\"text\" name=\"ingredient' + counter + '\" id=\"recipe_create_ingredients p-2\" class=\"form-control\" placeholder=\"Ingrédient\" required=\"required\"></div>' + '<div class=\"col-xl-6\"><input type=\"text\" name=\"qqt' + counter + '\" id=\"recipe_create_quantities\" class=\"form-control\" placeholder=\"Quantité\" required=\"required\"></div>' + '<br><br>');
 });
 
 let counter2 = 0;
@@ -222,13 +222,13 @@ counter2++;
 \t\t\t\t<div id=\"ingredients\">
 \t\t\t\t\t<br/>
 \t\t\t\t</div>
-\t\t\t\t\t<button type=\"button\" id=\"add-input\" class=\"btn btn-lg btn-primary\">Ajouter un ingredient</button>
+\t\t\t\t<button type=\"button\" id=\"add-input\" class=\"btn btn-lg btn-primary\">Ajouter un ingredient</button>
 \t\t\t\t<div class=\"d-flex\" style=\"height: 50px \"></div>
 \t\t\t\t<br/>
 \t\t\t\t<div id=\"steps\">
 \t\t\t\t\t<br/>
 \t\t\t\t</div>
-\t\t\t\t\t<button type=\"button\" id=\"add-input2\" class=\"btn btn-lg btn-primary\">Ajouter une étape</button>
+\t\t\t\t<button type=\"button\" id=\"add-input2\" class=\"btn btn-lg btn-primary\">Ajouter une étape</button>
 \t\t\t\t<div class=\"d-flex\" style=\"height: 50px \"></div>
 \t\t\t\t<div>
 \t\t\t\t\t{{ form_row(addRecipeForm.img, {'attr': {'class': 'form-control', 'placeholder': 'Ajouter une image'}}) }}
@@ -246,7 +246,7 @@ counter2++;
 let counter = 0;
 \$('#add-input').click(function () {
 counter++;
-\$('#ingredients').append('<input type=\"text\" name=\"ingredient' + counter + '\" id=\"recipe_create_ingredients p-2\" class=\"form-control\" placeholder=\"Ingrédient\" required=\"required\">' + '<input type=\"text\" name=\"qqt' + counter + '\" id=\"recipe_create_quantities\" class=\"form-control p-2\" placeholder=\"Quantité\" required=\"required\">' + '<br>');
+\$('#ingredients').append('<div class=\"row\"><div class=\"col-xl-6\"><input type=\"text\" name=\"ingredient' + counter + '\" id=\"recipe_create_ingredients p-2\" class=\"form-control\" placeholder=\"Ingrédient\" required=\"required\"></div>' + '<div class=\"col-xl-6\"><input type=\"text\" name=\"qqt' + counter + '\" id=\"recipe_create_quantities\" class=\"form-control\" placeholder=\"Quantité\" required=\"required\"></div>' + '<br><br>');
 });
 
 let counter2 = 0;
@@ -256,6 +256,6 @@ counter2++;
 });
 });
 </script>{% endblock %}
-", "recette/newRecipe.html.twig", "/Users/thibault/Code/GitHub/symfony/templates/recette/newRecipe.html.twig");
+", "recette/newRecipe.html.twig", "/Users/thibault/Code/GitHub/cooking-website/templates/recette/newRecipe.html.twig");
     }
 }
