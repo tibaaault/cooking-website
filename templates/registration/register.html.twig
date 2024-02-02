@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex" style="height: 50px"></div>
+	<div class="col-xl-5 col-sm mx-auto ">
+		<div class="col-xl-8 col-sm mx-auto card p-5 rounded rounded-4 shadow-lg">
+		<h2 class="" >Register</h2>
+			{{ form_errors(registrationForm) }}
+
+			{{ form_start(registrationForm) }}
+			{{ form_row(registrationForm.email) }}
+			{{ form_row(registrationForm.plainPassword ) }}
+			<div class="d-flex" style="height:20px;"></div>
+			{{ form_row(registrationForm.agreeTerms) }}
+	<div class="d-flex" style="height: 50px"></div>
+	<div class="text-center">
+		<button class="btn btn-lg btn-primary" type="submit">Register</button>
+	</div>
+		{{ form_end(registrationForm) }}
+		</div>
+	</div>
+
+{% endblock %}

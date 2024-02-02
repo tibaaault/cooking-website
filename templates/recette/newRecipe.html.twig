@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Recipe
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="d-flex" style="height: 50px "></div>
+		<div class="col-xl-10 col-sm mx-auto card py-4 shadow-lg rounded rounded-6">
+			<h3 class="ps-4 text-center">Nouvelle Recette</h3>
+		</div>
+		<div class="d-flex" style="height: 50px "></div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<div class="card p-4 shadow-lg rounded">
+				{{ form_errors(addRecipeForm) }}
+				{{ form_start(addRecipeForm, {'attr': {'enctype': 'multipart/form-data'}}) }}
+				<div class="mb-3">
+					{{ form_row(addRecipeForm.name, {'attr': {'class': 'form-control', 'placeholder': 'Nom de la recette'}}) }}
+				</div>
+				<div class="mb-3">
+					{{ form_row(addRecipeForm.description, {'attr': {'class': 'form-control', 'placeholder': 'Description de la recette'}}) }}
+				</div>
+				<div id="ingredients">
+					<br/>
+				</div>
+					<button type="button" id="add-input" class="btn btn-lg btn-primary">Ajouter un ingredient</button>
+				<div class="d-flex" style="height: 50px "></div>
+				<br/>
+				<div id="steps">
+					<br/>
+				</div>
+					<button type="button" id="add-input2" class="btn btn-lg btn-primary">Ajouter une étape</button>
+				<div class="d-flex" style="height: 50px "></div>
+				<div>
+					{{ form_row(addRecipeForm.img, {'attr': {'class': 'form-control', 'placeholder': 'Ajouter une image'}}) }}
+				</div>
+				<br/>
+				<button type="submit" class="btn btn-lg btn-secondary">Créer la recette</button>
+				{{ form_end(addRecipeForm) }}
+			</div>
+		</div>
+	</div>
+	<div class="d-flex" style="height: 200px "></div>
+</div>
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+let counter = 0;
+$('#add-input').click(function () {
+counter++;
+$('#ingredients').append('<input type="text" name="ingredient' + counter + '" id="recipe_create_ingredients p-2" class="form-control" placeholder="Ingrédient" required="required">' + '<input type="text" name="qqt' + counter + '" id="recipe_create_quantities" class="form-control p-2" placeholder="Quantité" required="required">' + '<br>');
+});
+
+let counter2 = 0;
+$('#add-input2').click(function () {
+counter2++;
+$('#steps').append('<input type="text" name="step' + counter2 + '" id="recipe_create_steps" class="form-control p-2" placeholder="Etape" required="required">' + '<br>');
+});
+});
+</script>{% endblock %}

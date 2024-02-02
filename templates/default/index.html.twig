@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the input field
+            const searchInput = document.getElementById('search');
+
+            // Add event listener to the input field for any input change
+            searchInput.addEventListener('input', function () {
+                filterRecipes();
+            });
+
+            // Function to filter recipes based on the search term
+            function filterRecipes() {
+                // Get the search term
+                const searchTerm = searchInput.value.toLowerCase();
+
+                // Get all recipe cards
+                const recipeCards = document.querySelectorAll('.col-xl-4.col-sm.mb-5');
+
+                // Loop through each recipe card
+                recipeCards.forEach(function (card) {
+                    // Get the recipe name from the card
+                    const recipeName = card.querySelector('.card-title').innerText.toLowerCase();
+
+                    // Check if the recipe name contains the search term
+                    if (recipeName.includes(searchTerm)) {
+                        // If it does, display the card
+                        card.style.display = 'block';
+                    } else {
+                        // If not, hide the card
+                        card.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+{% endblock %}
+
+{% block title %}
+	Accueil
+{% endblock %}
+
+{% block main %}
+	<div class="container-fluid  bg-light">
+		<div class="d-flex" style="height:50px"></div>
+		<div class='row'>
+			<div class="col-xl-3 col-sm">
+				<div class="col-xl-10 col-sm mx-auto">
+					<h1>Filtres
+						<i class="fas fa-filter fa-fw"></i>
+					</h1>
+					<div class="d-flex" style="height: 20px;"></div>
+					<div class="input-group mb-3">
+						<input type="search" class="form-control" id="search" placeholder="Rechercher un article" aria-label="SearchBar" aria-describedby="button-search"/>
+						<button class="btn btn-outline-secondary" type="button" id="searchButton">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-8 col-sm bg-secondary rounded rounded-9 mx-auto">
+				<div class="d-flex" style="height: 50px"></div>
+				<div class="col-xl-10 col-sm mx-auto">
+					<div class="row">
+						{% for recette in recettes %}
+							<div class="col-xl-4 col-sm mb-5" id="{{ recette.name }}">
+								<a href="{{ path('showRecette', {'id': recette.id}) }}" class="card-link">
+									<div class="card shadow-lg col-xl-12 mx-auto" style="height: 350px;">
+										<div style="height: 250px;">
+											<img src="img/{{ recette.img }}" class='img-fluid card-img-top mx-auto h-100 d-inline-block' alt="{{ recette.name }}"/>
+										</div>
+										<div class="card-body">
+											<h5 class="card-title">{{ recette.name }}</h5>
+
+										</div>
+									</div>
+								</a>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

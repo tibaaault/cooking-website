@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la recette
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="d-flex" style="height: 50px "></div>
+		<div class="col-xl-10 col-sm mx-auto card py-4 shadow-lg rounded rounded-6">
+			<h3 class="ps-4 text-center">Modifier la Recette</h3>
+		</div>
+		<div class="d-flex" style="height: 50px "></div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<div class="card p-4 shadow-lg rounded">
+				{{ form_errors(editRecipeForm) }}
+				{{ form_start(editRecipeForm, {'attr': {'enctype': 'multipart/form-data'}}) }}
+				<div class="mb-3">
+					{{ form_row(editRecipeForm.name, {'attr': {'class': 'form-control', 'placeholder': 'Nom de la recette'}}) }}
+				</div>
+				<div class="mb-3">
+					{{ form_row(editRecipeForm.description, {'attr': {'class': 'form-control', 'placeholder': 'Description de la recette'}}) }}
+				</div>
+				<br/>
+				<div id="ingredients">
+					<p class="label">Ingrédients</p>
+					{% for ingredient in recipe.ingredientsRecette %}
+						<div class="row">
+							<div class="col-xl-6">
+								<input type="text" name="ingredient{{ loop.index }}" class="form-control" placeholder="Ingrédient" required="required" value="{{ ingredient.ingredient.name }}">
+							</div>
+							<div class="col-xl-6">
+								<input type="text" name="qqt{{ loop.index }}" class="form-control" placeholder="Quantité" required="required" value="{{ ingredient.quantity }}">
+								<br>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<button type="button" id="add-input" class="btn btn-lg btn-primary">Ajouter un ingredient</button>
+				<div class="d-flex" style="height: 50px "></div>
+				<br/>
+				<div id="steps">
+					<p class="label">Étapes</p>
+					{% for step in recipe.steps %}
+						<input type="text" name="step{{ loop.index }}" class="form-control" placeholder="Etape" required="required" value="{{ step.detail }}">
+						<br>
+					{% endfor %}
+				</div>
+				<button type="button" id="add-input2" class="btn btn-lg btn-primary">Ajouter une étape</button>
+				<div class="d-flex" style="height: 50px "></div>
+				<div>
+					{{ form_row(editRecipeForm.img, {'attr': {'class': 'form-control', 'placeholder': 'Ajouter une image'}}) }}
+				</div>
+				<br/>
+				<button type="submit" class="btn btn-lg btn-secondary">Modifier la recette</button>
+				{{ form_end(editRecipeForm) }}
+			</div>
+		</div>
+	</div>
+	<div class="d-flex" style="height: 200px "></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    let counter = {{ recipe.ingredientsRecette|length }};
+    $('#add-input').click(function () {
+        counter++;
+        $('#ingredients').append('<div class="row"><div class="col-xl-6"><input type="text" name="ingredient' + counter + '" id="recipe_create_ingredients p-2" class="form-control" placeholder="Ingrédient" required="required"></div>' + '<div class="col-xl-6"><input type="text" name="qqt' + counter + '" id="recipe_create_quantities" class="form-control " placeholder="Quantité" required="required"></div></div>' + '<br>');
+    });
+
+    let counter2 = {{ recipe.steps|length }};
+    $('#add-input2').click(function () {
+        counter2++;
+        $('#steps').append('<input type="text" name="step' + counter2 + '" id="recipe_create_steps" class="form-control p-2" placeholder="Etape" required="required">' + '<br>');
+    });
+});
+</script></script>{% endblock %}
