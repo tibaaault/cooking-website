@@ -66,3 +66,4 @@ e8923f,127.0.0.1,GET,http://127.0.0.1:8000/apple-touch-icon.png,1706891948,e826a
 e826a1,127.0.0.1,GET,http://127.0.0.1:8000/apple-touch-icon.png,1706891948,,404,request
 9fa96b,127.0.0.1,GET,http://127.0.0.1:8000/recipe/edit/28,1706891950,4e6b34,404,request
 4e6b34,127.0.0.1,GET,http://127.0.0.1:8000/recipe/edit/28,1706891950,,404,request
+9f6f6e,127.0.0.1,GET,https://127.0.0.1:8001/,1706894864,,200,request
