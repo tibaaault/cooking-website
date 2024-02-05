@@ -1,7 +1,7 @@
-# Quiz Web Application
+# Cooking Web Application
 
 <p align="center">
-  <strong>A web application for creating and answering quizzes. Certain actions are restricted by one or more roles.</strong>
+  <strong>A website to display, create recipes.</strong>
 </p>
 
 <p align="center">
@@ -10,7 +10,11 @@
 
 ## Features 🚀
 
-- 🔄 Easy to use.
+- 🔄 Display recipes.
+- Create recipes
+- Edit recipes
+- Delete recipes
+- Login
 
 ## Prerequisites for use 🛠️
 - NONE
@@ -31,7 +35,7 @@
 
 ## Authors ✨
 
-[@KoZeuh](https://github.com/KoZeuh)
+[@tibaaault](https://github.com/tibaaault)
 
 ## License 📄
 
